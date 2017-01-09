@@ -12,6 +12,8 @@ class CreateSetsOfEight implements CSProcess{
 		while (v != -1){
 			for ( i in 0 .. 7 ) {
 				// put v into outList and read next input
+				outList.add(v);
+				v = inChannel.read()
 			}
 			println " Eight Object is ${outList}"
 		}
