@@ -18,10 +18,10 @@ INDEX VERSION 1.129+E:\Uni\Year-3\Fundamentals-of-Parallel-Systems\.metadata\.pl
 4075476442.index
 355346266.index
 3784036412.index
-2790403920.index
-1289911969.index
-1878037096.index
 1342785441.index
+2790403920.index
+1878037096.index
+1289911969.index
 2040813865.index
 1892593446.index
 3231472674.index
