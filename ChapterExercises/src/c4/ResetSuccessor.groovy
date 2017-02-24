@@ -13,9 +13,21 @@ class ResetSuccessor implements CSProcess {
   void run () {
     def guards = [ resetChannel, inChannel  ]
     def alt = new ALT ( guards )
-	while (true) {
-	  // deal with inputs from resteChannel and inChannel
-	  // use a priSelect
+	while (true) 
+	{
+		// deal with inputs from resetChannel and inChannel
+	  	// use a priSelect
+		def index = alt.priSelect()
+		
+		if(index == 0)
+		{
+			inChannel.read();
+			outChannel.write(resetValue)
+		}
+		else
+		{
+			outChannel.write(inChannel.read() +1)
+		}
 	}
   }
 }
