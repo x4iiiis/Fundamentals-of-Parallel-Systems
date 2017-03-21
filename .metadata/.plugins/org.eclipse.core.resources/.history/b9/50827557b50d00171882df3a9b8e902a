@@ -1,0 +1,22 @@
+package c2;
+
+import groovy.util.GroovyTestCase
+import org.jcsp.groovy.PAR
+import org.jcsp.lang.One2OneChannel
+
+class ThreeToEightTestCase  extends GroovyTestCase {
+2 void testQueue() {
+3
+4 One2OneChannel ch1 = Channel.createOne2One()
+5 One2OneChannel ch2 = Channel.createOne2One()
+6 CreateSetsOfEight soe=new CreateSetsOfEight(inChannel:ch2.in())
+7
+8 def processList = [
+9 new GenerateSetsOfThree ( outChannel: ch1.out() ),
+10 new ListToStream(inChannel:ch1.in(),outChannel:ch2.out()),
+11 soe
+12 ]
+13
+14 new PAR (processList).run()
+15 assertTrue(soe.outList == [17, 18, 19, 20, 21, 22, 23, 24])
+16 }}
