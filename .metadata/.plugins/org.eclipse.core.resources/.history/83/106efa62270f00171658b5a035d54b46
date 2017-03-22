@@ -32,7 +32,7 @@ class Server implements CSProcess{
       switch (index) {		  
         case CLIENT :
           def key = clientRequest.read()
-		  println "Server number ${serverID} receives key ${key} request from client"
+		  println "Server number ${serverID} recieves ${key} request from client"
           if ( dataMap.containsKey(key) ) 
 		  {
 			  println "Server number $serverID has key $key"

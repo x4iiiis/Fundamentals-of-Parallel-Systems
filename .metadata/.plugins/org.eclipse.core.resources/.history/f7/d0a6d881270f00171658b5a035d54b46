@@ -23,7 +23,7 @@ class Client implements CSProcess{
 	  println "Client number ${clientNumber} requests key ${key}"
       requestChannel.write(key)
       def v = receiveChannel.read()
-	  println "Client number ${clientNumber} receives key ${key}"
+	  println "Client number ${clientNumber} recieves key ${key}"
     }
 	
     println "Client $clientNumber has finished"

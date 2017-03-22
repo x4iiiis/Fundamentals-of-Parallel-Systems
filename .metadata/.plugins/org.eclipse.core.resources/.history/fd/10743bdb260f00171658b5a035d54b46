@@ -41,7 +41,7 @@ def server0 = new Server ( clientRequest: C02S0request.in(),
                             otherServerSend: S02S1send.out(),
                             dataMap: server0Map,
 							//Identifying servers
-							serverID: 0)
+							serverNumber: 0)
 
 def server1 = new Server ( clientRequest: C12S1request.in(),
                             clientSend: S12C1send.out(),
@@ -51,7 +51,7 @@ def server1 = new Server ( clientRequest: C12S1request.in(),
                             otherServerSend: S12S0send.out(),
                             dataMap: server1Map,
 							//Identifying servers
-							serverID: 1)
+							serverNumber: 1)
 
 def network = [client0, client1, server0, server1]
 new PAR (network).run()
