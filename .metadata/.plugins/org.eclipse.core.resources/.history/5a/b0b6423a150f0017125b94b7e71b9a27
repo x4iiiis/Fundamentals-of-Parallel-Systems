@@ -1,0 +1,25 @@
+package c2
+
+import org.jcsp.lang.*
+import org.jcsp.groovy.*
+
+class Test328 extends GroovyTestCase
+{
+	void testThreeToEight()
+	{
+		One2OneChannel c1 = Channel.createOne2One()
+		One2OneChannel c2 = Channel.createOne2One()
+		
+		CreateSetsOfEight sets8 = new CreateSetsOfEight (inChannel: c2.in() )
+		GenerateSetsOfThree sets3 = new GenerateSetsOfThree (outChannel: c1.out() )
+		ListToStream streamList = new ListToStream ( inChannel: c1.in(), outChannel: c2.out())
+		
+		def testList = [ sets3, streamList, sets8 ]
+		
+		new PAR (testList).run()
+		
+		def expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+		def actual = sets8.outList
+		assertTrue(actual == expected)
+	}
+}
