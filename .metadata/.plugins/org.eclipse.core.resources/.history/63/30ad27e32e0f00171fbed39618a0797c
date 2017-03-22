@@ -16,7 +16,7 @@ class Client implements CSProcess{
    
   void run () {
     def iterations = selectList.size
-	def success = true //Test variable
+	def success = true
     
 	println "Client $clientNumber has $iterations values in $selectList"
 	
@@ -31,15 +31,14 @@ class Client implements CSProcess{
 		success = false	
 		println "$v != $key"
 	  }
-    }
+       }
 	if (success == false)
 	{
-		println "Client $clientNumber has failed the test"
+		println "Client $clientNumber has finished, but the test failed"
 	}
 	else
 	{
-		println "Client $clientNumber has successfully completed the test"
+		println "Client $clientNumber has finished and test passed"
 	}
   }
-}
 

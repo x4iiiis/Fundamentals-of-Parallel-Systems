@@ -16,9 +16,7 @@ class Client implements CSProcess{
    
   void run () {
     def iterations = selectList.size
-	def success = true //Test variable
-    
-	println "Client $clientNumber has $iterations values in $selectList"
+    println "Client $clientNumber has $iterations values in $selectList"
 	
     for ( i in 0 ..< iterations) {
       def key = selectList[i]
@@ -26,20 +24,8 @@ class Client implements CSProcess{
       requestChannel.write(key)
       def v = receiveChannel.read()
 	  println "Client number ${clientNumber} receives key ${key}"
-    if (v != key * 10)
-	  {
-		success = false	
-		println "$v != $key"
-	  }
     }
-	if (success == false)
-	{
-		println "Client $clientNumber has failed the test"
-	}
-	else
-	{
-		println "Client $clientNumber has successfully completed the test"
-	}
+	
+    println "Client $clientNumber has finished"
   }
 }
-

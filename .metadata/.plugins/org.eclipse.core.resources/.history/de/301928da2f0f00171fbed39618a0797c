@@ -16,7 +16,7 @@ class Client implements CSProcess{
    
   void run () {
     def iterations = selectList.size
-	def success = true //Test variable
+	def success = true
     
 	println "Client $clientNumber has $iterations values in $selectList"
 	
