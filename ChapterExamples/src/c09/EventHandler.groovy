@@ -16,6 +16,7 @@ class EventHandler implements CSProcess {
     def get = Channel.one2one()
     def transfer = Channel.one2one()
     def toBuffer = Channel.one2one() 
+	def toCounter = Channel.one2one() //Channel for communicating with MissedEventCounter
 	   
     def handlerList = [ new EventReceiver ( eventIn: inChannel, 
                                             eventOut: toBuffer.out()),
@@ -24,7 +25,10 @@ class EventHandler implements CSProcess {
                                             outChannel: transfer.out() ),
                         new EventPrompter ( inChannel: transfer.in(), 
                                             getChannel: get.out(),
-                                            outChannel: outChannel )
+                                            outChannel: toCounter.out() ),
+						//Defining the MissedEventCounter class 
+						new MissedEventCounter ( inChannel: toCounter.in(),
+												 outChannel: outChannel)
                       ]
     new PAR ( handlerList ).run()
   }

@@ -1,0 +1,30 @@
+package c09
+
+import org.jcsp.lang.*
+import org.jcsp.groovy.*
+
+class MissedEventCounter implements CSProcess
+{
+	def ChannelInput inChannel
+	def ChannelOutput outChannel
+	
+	void run()
+	{
+		while (true) 
+		{
+			def e = inChannel.read()
+			outChannel.write(e) //passing e to outChannel
+			//def prevData =  e.missed + 1 //initialData + missed value + 1 
+			def prevData = e.data - e.missed
+			
+			if(prevData != e.data) //if expected data value and actual data value mismatch
+			{
+				println "Wrong! $e.data should be $prevData" 
+			}
+			else
+				{
+					println "hi"
+				}
+		}
+	}
+}
